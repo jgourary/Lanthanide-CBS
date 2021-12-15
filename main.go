@@ -10,7 +10,7 @@ const memory = "4 GB"
 const basis = "def2-TZVPD"
 const energy = "MP2/def2-[TQ]ZVPD"
 func getShiftDistances(eqDistance float64) []float64 {
-	samplePts := []float64{-0.2, -0.1, 0, 0.1, 0.25, 0.5, 0.75, 1}
+	samplePts := []float64{-0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5}
 	for i, pt := range samplePts {
 		samplePts[i] = pt * eqDistance
 	}
