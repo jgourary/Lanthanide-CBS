@@ -2,26 +2,27 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"math"
 	"os"
-	"path/filepath"
-	"strconv"
 )
 
 const memory = "4 GB"
 const basis = "def2-TZVPD"
 const energy = "MP2/def2-[TQ]ZVPD"
-func getSamplePoints() []float64 {
-	return []float64{-0.2, -0.1, 0, 0.1, 0.25, 0.5, 0.75, 1} // 0 = everything in same spot, 1 = ligand moved to double equilibrium distance
+func getShiftDistances(eqDistance float64) []float64 {
+	samplePts := []float64{-0.2, -0.1, 0, 0.1, 0.25, 0.5, 0.75, 1}
+	for i, pt := range samplePts {
+		samplePts[i] = pt * eqDistance
+	}
+	return samplePts
 }
 const pointsEitherSide = 4 // 4 -> total points = 1 + 4 + 4 = 9
 
 
 func main() {
-	inputFile := os.Args[0]
-	outputDir := os.Args[1]
-	structName, molecules := readFile(inputFile)
+	inputFile := os.Args[1]
+	outputDir := os.Args[2]
+	structName, molecules := readFile(inputFile, false)
 	var ion molecule
 	var ligand molecule
 	if len(molecules[1].atoms) == 1 {
@@ -31,53 +32,45 @@ func main() {
 		ligand = molecules[1]
 		ion = molecules[0]
 	}
+	fmt.Println("ION: ")
+	printMolecule(ion)
+	fmt.Println("LIGAND: ")
+	printMolecule(ligand)
 
 	unitAxis, equilibDistance := getUnitAxis(ion, ligand)
+	fmt.Println("\nUnit axis = [" + fmt.Sprintf("%.6f", unitAxis[0]) + " " +
+		fmt.Sprintf("%.6f", unitAxis[1])  + " " + fmt.Sprintf("%.6f", unitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", equilibDistance))
+
+
 	ligands := generateModifiedStructures(ligand, unitAxis, equilibDistance)
+	fmt.Println("New Ligands: ")
+	for i, _ := range ligands {
+		newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i])
+		fmt.Println(fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
+			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", newEquilibDistance))
+	}
+	writeInputs(ion, ligands, outputDir, structName)
 
 }
 
-func writeInputs(ion molecule, ligands []molecule) {
-	for _, ligand := range ligands {
 
-	}
-}
-
-func writeInput(ion molecule, ligand molecule, outDir string, structName string, i int) {
-	outPath := filepath.Join(outDir, structName + "_" + strconv.Itoa(i) + ".inp")
-	_ = os.MkdirAll(outDir, 0755)
-	thisFile, err := os.Create(outPath)
-	if err != nil {
-		fmt.Println("Failed to create new fragment file: " + outPath)
-		log.Fatal(err)
-	}
-	_, _ = thisFile.WriteString("memory " + memory + "\n")
-	_, _ = thisFile.WriteString("set basis " + basis + "\n")
-	_, _ = thisFile.WriteString("molecule{\n")
-	_, _ = thisFile.WriteString("\t" + ion.charge + " " + ion.multiplicity + "\n")
-	for _, atom := range ion.atoms {
-		_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprint("%.6f", atom.pos[0]) + " " +
-		fmt.Sprint("%.6f", atom.pos[0])  + " " + fmt.Sprint("%.6f", atom.pos[2])  + "\n")
-	}
-	_, _ = thisFile.WriteString("\t--\n")
-}
 
 func generateModifiedStructures(ligand molecule, unitAxis []float64, equilibDistance float64) []molecule {
-	var ligands []molecule
-	samplePoints := getSamplePoints()
+
+	shiftDistances := getShiftDistances(equilibDistance)
+	ligands := make([]molecule, len(shiftDistances))
+	for i, _ := range shiftDistances {
+		ligands[i] = copyMolecule(ligand)
+	}
 	// for every positioning of the ligand...
-	for _, samplePoint := range samplePoints {
-		// create new copy of ligand
-		newLigand := copyMolecule(ligand)
-		// move every atom to new position
-		for _, thisAtom := range newLigand.atoms {
-			thisAtom.pos[0] += unitAxis[0] * samplePoint * equilibDistance
-			thisAtom.pos[1] += unitAxis[1] * samplePoint * equilibDistance
-			thisAtom.pos[2] += unitAxis[2] * samplePoint * equilibDistance
+	for i, _ := range shiftDistances {
+		for j := 0; j < len(ligands[i].atoms); j++  {
+			ligands[i].atoms[j].pos[0] += unitAxis[0] * shiftDistances[i]
+			ligands[i].atoms[j].pos[1] += unitAxis[1] * shiftDistances[i]
+			ligands[i].atoms[j].pos[2] += unitAxis[2] * shiftDistances[i]
 		}
 		// save ligand
-		newLigand.shift = samplePoint
-		ligands = append(ligands, newLigand)
+		ligands[i].shift = shiftDistances[i]
 	}
 	return ligands
 }
