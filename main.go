@@ -9,6 +9,7 @@ import (
 const memory = "4 GB"
 const basis = "def2-TZVPD"
 const energy = "MP2/def2-[TQ]ZVPD"
+const mode = "manual"
 func getShiftDistances(eqDistance float64) []float64 {
 	samplePts := []float64{-0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5}
 	for i, pt := range samplePts {
@@ -37,7 +38,15 @@ func main() {
 	fmt.Println("LIGAND: ")
 	printMolecule(ligand)
 
-	unitAxis, equilibDistance := getUnitAxis(ion, ligand)
+	var unitAxis []float64
+	var equilibDistance float64
+	if mode != "manual" {
+		unitAxis, equilibDistance = getUnitAxis(ion, ligand, -1)
+	} else {
+		unitAxis = []float64{-0.99998991,0.004261549,-0.001418643}
+		equilibDistance = 2.669451926
+	}
+
 	fmt.Println("\nUnit axis = [" + fmt.Sprintf("%.6f", unitAxis[0]) + " " +
 		fmt.Sprintf("%.6f", unitAxis[1])  + " " + fmt.Sprintf("%.6f", unitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", equilibDistance))
 
@@ -45,7 +54,7 @@ func main() {
 	ligands := generateModifiedStructures(ligand, unitAxis, equilibDistance)
 	fmt.Println("New Ligands: ")
 	for i, _ := range ligands {
-		newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i])
+		newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i], -1)
 		fmt.Println(fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
 			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", newEquilibDistance))
 	}
@@ -75,22 +84,30 @@ func generateModifiedStructures(ligand molecule, unitAxis []float64, equilibDist
 	return ligands
 }
 
-func getUnitAxis(ionMol molecule, ligandMol molecule) ([]float64, float64) {
-
-	startPos := ionMol.atoms[0].pos
-
-	endPos := make([]float64, 3)
+func getUnitAxis(ionMol molecule, ligandMol molecule, ligandIndex int) ([]float64, float64) {
+	var startPos []float64
+	var endPos []float64
 	closestDist := 1e100
-	for _, atom := range ligandMol.atoms {
-		dist := getDistance(startPos, atom.pos)
-		if  dist < closestDist {
-			endPos = atom.pos
-			closestDist = dist
-		}
-	}
 
+	if ligandIndex < 0 {
+		startPos = ionMol.atoms[0].pos
+		endPos = make([]float64, 3)
+
+		for _, atom := range ligandMol.atoms {
+			dist := getDistance(startPos, atom.pos)
+			if  dist < closestDist {
+				endPos = atom.pos
+				closestDist = dist
+			}
+		}
+	} else {
+		startPos = ionMol.atoms[0].pos
+		endPos = ligandMol.atoms[ligandIndex].pos
+		closestDist = getDistance(startPos, endPos)
+	}
 	vector := []float64{(endPos[0]-startPos[0])/closestDist, (endPos[1]-startPos[1]) / closestDist, (endPos[2]-startPos[2])/closestDist}
 	return vector, closestDist
+
 }
 
 func getDistance(pos1 []float64, pos2 []float64) float64 {

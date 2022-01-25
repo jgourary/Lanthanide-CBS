@@ -3,24 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d1bb5e28-72a1-49b6-afbe-cc049dfeb2e4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/input/la_acetate.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/input/la_acetate.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/input/la_amide.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/input/la_amide.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_0.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_0.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_1.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_1.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_2.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_2.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_3.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_3.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_4.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_4.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_5.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_5.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_6.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_6.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_7.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_7.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_0.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_0.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_1.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_1.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_2.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_2.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_3.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_3.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_4.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_4.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_5.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_5.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_6.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_6.inp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_7.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_7.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +33,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lanthanideStartingStructureGen" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,7 +46,7 @@
       <module name="Lanthanide-CBS" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
-      <parameters value="lib\input\la_acetate.inp lib\output" />
+      <parameters value="lib\input\la_acetate_bidentate.inp lib\output" />
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$" />
       <directory value="$PROJECT_DIR$" />
