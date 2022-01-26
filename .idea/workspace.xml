@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1bb5e28-72a1-49b6-afbe-cc049dfeb2e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/obabelConverter.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/txyzPostProcessor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputWriter.go" beforeDir="false" afterPath="$PROJECT_DIR$/outputWriter.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +49,7 @@
       <module name="Lanthanide-CBS" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
-      <parameters value="lib\input\la_acetate_bidentate.inp lib\output" />
+      <parameters value="lib\input\la_acetate_bidentate.inp lib\output lib\key" />
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$" />
       <directory value="$PROJECT_DIR$" />

@@ -23,6 +23,7 @@ const pointsEitherSide = 4 // 4 -> total points = 1 + 4 + 4 = 9
 func main() {
 	inputFile := os.Args[1]
 	outputDir := os.Args[2]
+	keyDir := os.Args[3]
 	structName, molecules := readFile(inputFile, false)
 	var ion molecule
 	var ligand molecule
@@ -58,7 +59,7 @@ func main() {
 		fmt.Println(fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
 			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", newEquilibDistance))
 	}
-	writeInputs(ion, ligands, outputDir, structName)
+	writeInputs(ion, ligands, outputDir, structName, keyDir)
 
 }
 
