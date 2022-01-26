@@ -2,11 +2,13 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -61,6 +63,7 @@ func postProcessTXYZ(path string, keyChain map[string]map[string]string) {
 
 	outLines := make([]string,0)
 
+	// revise atom types
 	for scanner.Scan() {
 		// get next line
 		line := scanner.Text()
@@ -77,15 +80,90 @@ func postProcessTXYZ(path string, keyChain map[string]map[string]string) {
 		}
 	}
 
+	atoms := make(map[string]*atom)
+	// read as molecule and edit bonds
+	for _, nextLine := range outLines {
+		tokens := strings.Fields(nextLine)
+		if len(tokens) > 5 {
+			// create new atom
+			var newAtom atom
+			newAtom.id = tokens[0]
+			newAtom.element = tokens[1]
+			pos := make([]float64,3)
+			for j := 2; j < 5; j++ {
+				pos[j-2], err = strconv.ParseFloat(tokens[j],64)
+				if err != nil {
+					newErr := errors.New("Failed to convert \"" + tokens[j] + "\" in position 0 on line " + strconv.Itoa(j) + " to a float64")
+					log.Fatal(newErr)
+				}
+			}
+			newAtom.pos = pos
+			newAtom.atomType = tokens[5]
+			newAtom.bonds = make([]string,0)
+			if len(tokens) > 6 {
+				for k := 6; k < len(tokens); k++ {
+					newAtom.bonds = append(newAtom.bonds, tokens[k])
+				}
+			}
+			atoms[newAtom.id] = &newAtom
+		}
+	}
+	for _, atom := range atoms {
+		for _, bond := range atom.bonds {
+			if bond == "1" {
+				disconnect(atoms,"1", atom.id)
+			}
+		}
+	}
+
+	atomSlice := make([]atom, len(atoms))
+	for id, atom := range atoms {
+		intID, err := strconv.Atoi(id)
+		if err != nil {
+			fmt.Println("Failed ID conversion for " + id)
+		}
+		atomSlice[intID-1] = *atom
+	}
+
 	// Write OUT
 	thisFile, err := os.Create(path)
 	if err != nil {
 		fmt.Println("Failed to create new fragment file: " + path)
 		log.Fatal(err)
 	}
-	for _, line := range outLines {
-		_, _ = thisFile.WriteString(line + "\n")
+	_, _ = thisFile.WriteString(outLines[0] + "\n")
+	for i, _ := range atomSlice {
+		line := atomSlice[i].id + "\t" + atomSlice[i].element + "\t" + fmt.Sprintf("%.6f",atomSlice[i].pos[0]) + "\t" +
+			fmt.Sprintf("%.6f",atomSlice[i].pos[1]) + "\t" + fmt.Sprintf("%.6f",atomSlice[i].pos[2]) + "\t" +
+			atomSlice[i].atomType
+		for _, bondedAtom := range atomSlice[i].bonds {
+			line += "\t" + bondedAtom
+		}
+
+		_, err = thisFile.WriteString(line + "\n")
 	}
+
+
+}
+
+// removes each atom from the other's list of bonded atoms
+func disconnect(atoms map[string]*atom, atom1 string, atom2 string) {
+	for i, bondedAtom := range atoms[atom1].bonds {
+		if bondedAtom == atom2 {
+			atoms[atom1].bonds = remove(atoms[atom1].bonds,i)
+		}
+	}
+	for i, bondedAtom := range atoms[atom2].bonds {
+		if bondedAtom == atom1 {
+			atoms[atom2].bonds = remove(atoms[atom2].bonds,i)
+		}
+	}
+}
+
+// removes element from slice
+func remove(s []string, i int) []string {
+	s[i] = s[len(s)-1]
+	return s[:len(s)-1]
 }
 
 func getKeyChain(dir string) map[string]map[string]string {

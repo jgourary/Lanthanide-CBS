@@ -11,6 +11,9 @@ type molecule struct {
 type atom struct {
 	element string
 	pos []float64
+	bonds []string
+	atomType string
+	id string
 }
 
 func copyAtom(oldAtom atom) atom {
