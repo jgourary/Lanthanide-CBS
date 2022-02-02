@@ -24,7 +24,7 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 	}
 
 	// Write INP
-	outPath := filepath.Join(outDir, structName + "_" + strconv.Itoa(i) + ".inp")
+	outPath := filepath.Join(outDir, structName + "_" + index2suffix(i) + ".inp")
 	_ = os.MkdirAll(outDir, 0755)
 	thisFile, err := os.Create(outPath)
 	if err != nil {
@@ -33,6 +33,8 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 	}
 	_, _ = thisFile.WriteString("memory " + memory + "\n")
 	_, _ = thisFile.WriteString("set basis " + basis + "\n")
+	_, _ = thisFile.WriteString("set soscf true\n")
+	_, _ = thisFile.WriteString("set fail_on_maxiter false\n")
 	_, _ = thisFile.WriteString("molecule{\n")
 	_, _ = thisFile.WriteString("\t" + ion.charge + " " + ion.multiplicity + "\n")
 	for _, atom := range ion.atoms {
@@ -49,7 +51,7 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 	_, _ = thisFile.WriteString("energy('" + energy + "')\n")
 
 	// Write XYZ
-	outPath = filepath.Join(outDir, structName + "_" + strconv.Itoa(i) + ".xyz")
+	outPath = filepath.Join(outDir, structName + "_" + index2suffix(i) + ".xyz")
 	thisFile, err = os.Create(outPath)
 	if err != nil {
 		fmt.Println("Failed to create new fragment file: " + outPath)
@@ -63,6 +65,17 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 	for _, atom := range ligandSlice {
 		_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
 			fmt.Sprintf("%.6f", atom.pos[1])  + " " + fmt.Sprintf("%.6f", atom.pos[2])  + "\n")
+	}
+}
+
+func index2suffix(i int) string {
+	iStr := strconv.Itoa(i)
+	if i < 10 {
+		return "00" + iStr
+	} else if i < 100 {
+		return "0" + iStr
+	} else {
+		return iStr
 	}
 }
 

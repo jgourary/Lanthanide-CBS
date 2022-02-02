@@ -9,15 +9,18 @@ import (
 const memory = "4 GB"
 const basis = "def2-TZVPD"
 const energy = "MP2/def2-[TQ]ZVPD"
-const mode = "manual"
+const mode = "auto"
 func getShiftDistances(eqDistance float64) []float64 {
-	samplePts := []float64{-0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5}
-	for i, pt := range samplePts {
-		samplePts[i] = pt * eqDistance
-	}
+	samplePts := []float64{-1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0}
+	/*for i, pt := range samplePts {
+		samplePts[i] = pt + eqDistance
+	}*/
 	return samplePts
 }
-const pointsEitherSide = 4 // 4 -> total points = 1 + 4 + 4 = 9
+
+/*func getCostScaling() {
+	costScaling := []float64{-1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0}
+}*/
 
 
 func main() {
@@ -56,8 +59,8 @@ func main() {
 	fmt.Println("New Ligands: ")
 	for i, _ := range ligands {
 		newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i], -1)
-		fmt.Println(fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
-			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", newEquilibDistance))
+		fmt.Println("Shift Dist: " + fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
+			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], ion-ligand dist = " + fmt.Sprintf("%.6f", newEquilibDistance))
 	}
 	writeInputs(ion, ligands, outputDir, structName, keyDir)
 

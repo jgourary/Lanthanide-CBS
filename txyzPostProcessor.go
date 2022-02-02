@@ -37,13 +37,13 @@ func postProcessTXYZs(dir string, keyChain map[string]map[string]string) {
 func postProcessTXYZ(path string, keyChain map[string]map[string]string) {
 	// open file
 	file, err := os.Open(path)
-	fmt.Println("Reading file at " + path)
+	//fmt.Println("Reading file at " + path)
 	if err != nil {
 		fmt.Println("Failed to open molecule file: " + path)
 		log.Fatal(err)
 	}
 	structureName := strings.Split(filepath.Base(path),".")[0]
-	fmt.Println("Structure Name: " + structureName)
+	//fmt.Println("Structure Name: " + structureName)
 	structurePieces := strings.Split(structureName, "_")
 	structurePieces = structurePieces[:len(structurePieces)-1]
 	newStructureName := ""
@@ -53,7 +53,7 @@ func postProcessTXYZ(path string, keyChain map[string]map[string]string) {
 			newStructureName += "_"
 		}
 	}
-	fmt.Println("Searching for key: " + newStructureName)
+	//fmt.Println("Searching for key: " + newStructureName)
 
 
 	relevantKey := keyChain[newStructureName]
@@ -185,7 +185,7 @@ func getKeyChain(dir string) map[string]map[string]string {
 func keyReader(filePath string) (string, map[string]string) {
 	// open file
 	file, err := os.Open(filePath)
-	fmt.Println("Reading file at " + filePath)
+	//fmt.Println("Reading file at " + filePath)
 	if err != nil {
 		fmt.Println("Failed to open molecule file: " + filePath)
 		log.Fatal(err)
@@ -209,3 +209,61 @@ func keyReader(filePath string) (string, map[string]string) {
 	return structureName, params
 }
 
+
+
+func QMEnergyAssembler(dir string) []float64 {
+
+	fileInfo, err := ioutil.ReadDir(dir)
+	if err != nil {
+		fmt.Println("failed to read directory: " + dir)
+		log.Fatal(err)
+	}
+	QmEnergies := make([]float64,0)
+	for _, file := range fileInfo {
+		path := filepath.Join(dir, file.Name())
+		nameFields := strings.Split(file.Name(),".")
+		if nameFields[len(nameFields)-1] == "dat" {
+			CBSenergy := getCBSEnergy(path)
+			QmEnergies = append(QmEnergies, CBSenergy)
+		}
+	}
+
+	outPath := filepath.Join(dir,"QM-energy.dat")
+	thisFile, err := os.Create(outPath)
+	if err != nil {
+		fmt.Println("Failed to create new fragment file: " + outPath)
+		log.Fatal(err)
+	}
+	for _, i := range QmEnergies {
+		_,_ = thisFile.WriteString(fmt.Sprintf("%.6f", i) + "\n")
+	}
+	_ = thisFile.Close()
+	return QmEnergies
+}
+
+func getCBSEnergy(path string) float64 {
+	// open file
+	file, err := os.Open(path)
+	//fmt.Println("Reading file at " + path)
+	if err != nil {
+		fmt.Println("Failed to open molecule file: " + path)
+		log.Fatal(err)
+	}
+
+	// Initialize scanner
+	scanner := bufio.NewScanner(file)
+
+	e := 0.0
+
+	for scanner.Scan() {
+		// get next line
+		line := scanner.Text()
+		// split by whitespace
+		tokens := strings.Fields(line)
+		if len(tokens) == 3 && tokens[0] == "total" && tokens[1] == "CBS" {
+			e, err = strconv.ParseFloat(tokens[2], 64)
+		}
+	}
+	_ = file.Close()
+	return e
+}

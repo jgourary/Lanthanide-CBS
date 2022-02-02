@@ -14,7 +14,7 @@ import (
 func readFile(filePath string, verbose bool) (string, []molecule) {
 	// open file
 	file, err := os.Open(filePath)
-	fmt.Println("Reading file at " + filePath)
+	//fmt.Println("Reading file at " + filePath)
 	if err != nil {
 		fmt.Println("Failed to open molecule file: " + filePath)
 		log.Fatal(err)
