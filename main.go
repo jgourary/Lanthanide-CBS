@@ -2,18 +2,24 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"math"
-	"os"
+	"path/filepath"
+	"strings"
 )
+const gaussian = false
+const psi4 = true
 
-const memory = "4 GB"
-const basis = "def2-TZVPD"
-const basisNoCBS = "def2-QZVPD"
-const energy = "MP2/def2-[TQ]ZVPD"
-const energyNoCBS = "MP2/def2-QZVPD"
-const mode = "manual"
+const memory = "50 GB"
+const basis = "def2-QZVPD"
+const energy = "cbs, corl_wfn='mp2',corl_basis='def2-[TQ]ZVPD', delta_wfn='ccsd(t)', delta_basis='def2-[DT]ZVPD'"
 const ionElement = "La"
-const CBS = false
+
+const keyDir = "lib\\key"
+const outputDir = "lib\\output"
+const inputDIr = "lib\\input"
+
 func getShiftDistances(eqDistance float64) []float64 {
 	samplePts := []float64{-1.0, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0}
 	/*for i, pt := range samplePts {
@@ -28,47 +34,59 @@ func getShiftDistances(eqDistance float64) []float64 {
 
 
 func main() {
-	inputFile := os.Args[1]
-	outputDir := os.Args[2]
-	keyDir := os.Args[3]
-	structName, molecules := readFile(inputFile, false)
-	var ion molecule
-	var ligand molecule
-	if len(molecules[1].atoms) == 1 {
-		ligand = molecules[0]
-		ion = molecules[1]
-	} else {
-		ligand = molecules[1]
-		ion = molecules[0]
+	fileInfo, err := ioutil.ReadDir(inputDIr)
+	if err != nil {
+		fmt.Println("failed to read directory: " + inputDIr)
+		log.Fatal(err)
 	}
-	fmt.Println("ION: ")
-	printMolecule(ion)
-	fmt.Println("LIGAND: ")
-	printMolecule(ligand)
+	for _, file := range fileInfo {
+		name := file.Name()
+		path := filepath.Join(inputDIr, name)
+		if filepath.Ext(name) == ".inp" {
+			fmt.Println("Reading file at " + path)
+			structName, molecules := readFile(path, false)
+			var ion molecule
+			var ligand molecule
+			if len(molecules[1].atoms) == 1 {
+				ligand = molecules[0]
+				ion = molecules[1]
+			} else {
+				ligand = molecules[1]
+				ion = molecules[0]
+			}
+			fmt.Println("ION: ")
+			printMolecule(ion)
+			fmt.Println("LIGAND: ")
+			printMolecule(ligand)
 
-	var unitAxis []float64
-	var equilibDistance float64
-	if mode != "manual" {
-		unitAxis, equilibDistance = getUnitAxis(ion, ligand, -1)
-	} else {
-		unitAxis = []float64{-0.99998991,0.004261549,-0.001418643}
-		equilibDistance = 2.669451926
+			var unitAxis []float64
+			var equilibDistance float64
+			if strings.Contains(name, "bidentate") {
+				unitAxis = []float64{-0.99998991,0.004261549,-0.001418643}
+				equilibDistance = 2.669451926
+
+			} else {
+				unitAxis, equilibDistance = getUnitAxis(ion, ligand, -1)
+			}
+
+			fmt.Println("\nUnit axis = [" + fmt.Sprintf("%.6f", unitAxis[0]) + " " +
+				fmt.Sprintf("%.6f", unitAxis[1])  + " " + fmt.Sprintf("%.6f", unitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", equilibDistance))
+
+
+			ligands := generateModifiedStructures(ligand, unitAxis, equilibDistance)
+			fmt.Println("New Ligands: ")
+			for i, _ := range ligands {
+				newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i], -1)
+				fmt.Println("Shift Dist: " + fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
+					fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], ion-ligand dist = " + fmt.Sprintf("%.6f", newEquilibDistance))
+			}
+
+			// Write XYZ, TXYZ, INP files + filelist
+			writeInputs(ion, ligands, outputDir, structName, keyDir)
+		}
 	}
 
-	fmt.Println("\nUnit axis = [" + fmt.Sprintf("%.6f", unitAxis[0]) + " " +
-		fmt.Sprintf("%.6f", unitAxis[1])  + " " + fmt.Sprintf("%.6f", unitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", equilibDistance))
 
-
-	ligands := generateModifiedStructures(ligand, unitAxis, equilibDistance)
-	fmt.Println("New Ligands: ")
-	for i, _ := range ligands {
-		newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i], -1)
-		fmt.Println("Shift Dist: " + fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
-			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], ion-ligand dist = " + fmt.Sprintf("%.6f", newEquilibDistance))
-	}
-
-	// Write XYZ, TXYZ, INP files + filelist
-	writeInputs(ion, ligands, outputDir, structName, keyDir)
 
 	// Assemble QM-Energy.dat from all .dat files in the directory
 	//QMEnergyAssembler(outputDir)

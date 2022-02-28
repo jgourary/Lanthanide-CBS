@@ -1,4 +1,4 @@
-memory 4 GB
+memory 50 GB
 set basis def2-QZVPD
 set soscf true
 set fail_on_maxiter false
@@ -16,4 +16,4 @@ molecule{
 	H -2.557976 0.988133 -0.152249
 }
 
-energy('MP2/def2-QZVPD')
+energy(cbs, corl_wfn='mp2',corl_basis='def2-[TQ]ZVPD', delta_wfn='ccsd(t)', delta_basis='def2-[DT]ZVPD')

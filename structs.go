@@ -1,5 +1,10 @@
 package main
 
+type execution struct {
+	input string
+	manualMode bool
+}
+
 type molecule struct {
 	charge string
 	multiplicity string

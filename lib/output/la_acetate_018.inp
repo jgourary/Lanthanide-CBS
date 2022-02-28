@@ -1,0 +1,19 @@
+memory 50 GB
+set basis def2-QZVPD
+set soscf true
+set fail_on_maxiter false
+molecule{
+	3 1
+	La 1.177266 0.024240 -0.004059
+	--
+	-1 1
+	H -4.488169 1.007753 0.956610
+	H -4.703430 0.740858 -0.765496
+	C -3.976085 0.979591 -0.000075
+	C -2.964044 -0.116571 0.036967
+	O -1.593990 0.375443 0.073849
+	O -3.074608 -1.266191 0.014418
+	H -3.516670 1.934360 -0.195827
+}
+
+energy(cbs, corl_wfn='mp2',corl_basis='def2-[TQ]ZVPD', delta_wfn='ccsd(t)', delta_basis='def2-[DT]ZVPD')
