@@ -1,0 +1,15 @@
+%Mem=16GB
+%NProc=8
+%Chk=la_water_010_cp.chk
+
+#p MP2/Def2QZVP wB97XD nosymm MaxDisk=1000GB Counterpoise=2
+
+la_water_010
+
+	3,1 3,1 0,1
+	La(Fragment=1) -0.038392 -0.277582 0.000000
+	O(Fragment=2) 0.422431 3.065466 0.000000
+	H(Fragment=2) 0.513742 3.655368 0.761699
+	H(Fragment=2) 0.513742 3.655368 -0.761699
+
+

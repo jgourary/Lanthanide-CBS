@@ -1,5 +1,5 @@
 memory 4 GB
-set basis def2-TZVPD
+set basis def2-QZVPD
 set soscf true
 set fail_on_maxiter false
 molecule{
@@ -16,4 +16,4 @@ molecule{
 	H -4.157960 0.994952 -0.154519
 }
 
-energy('MP2/def2-[TQ]ZVPD')
+energy('MP2/def2-QZVPD')

@@ -2,111 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1bb5e28-72a1-49b6-afbe-cc049dfeb2e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/csvGenerator.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputReader.go" beforeDir="false" afterPath="$PROJECT_DIR$/inputReader.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/key/la_acetate_bidentate.txyz" beforeDir="false" afterPath="$PROJECT_DIR$/lib/key/la_acetate_bidentate.txyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/QM-energy.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/filelist" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/filelist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_0.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_0.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_0.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_1.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_1.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_1.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_2.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_2.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_2.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_3.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_3.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_3.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_4.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_4.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_4.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_5.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_5.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_5.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_6.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_6.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_6.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_7.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_7.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_7.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_0.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_0.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_0.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_1.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_1.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_1.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_2.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_2.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_2.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_3.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_3.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_3.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_4.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_4.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_4.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_5.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_5.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_5.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_6.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_6.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_6.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_7.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_7.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_7.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_0.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_0.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_0.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_1.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_1.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_1.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_2.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_2.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_2.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_3.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_3.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_3.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_4.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_4.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_4.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_5.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_5.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_5.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_6.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_6.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_6.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_7.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_7.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_7.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_0.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_0.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_0.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_1.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_1.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_1.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_2.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_2.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_2.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_3.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_3.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_3.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_4.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_4.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_4.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_5.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_5.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_5.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_6.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_6.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_6.xyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_7.inp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_7.txyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/output/la_water_7.xyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/csvGenerator.go" beforeDir="false" afterPath="$PROJECT_DIR$/csvGenerator.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_000.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_000.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_001.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_001.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_002.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_002.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_003.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_003.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_004.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_004.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_005.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_005.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_006.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_006.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_007.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_007.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_008.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_008.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_009.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_009.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_010.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_010.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_011.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_011.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_012.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_012.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_013.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_013.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_014.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_014.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_015.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_015.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_016.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_016.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_017.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_017.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_018.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_018.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_019.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_019.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_020.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_acetate_bidentate_020.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_000.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_000.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_001.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_001.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_002.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_002.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_003.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_003.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_004.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_004.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_005.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_005.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_006.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_006.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_007.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_007.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_008.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_008.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_009.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_009.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_010.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_010.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_011.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_011.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_012.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_012.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_013.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_013.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_014.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_014.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_015.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_015.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_016.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_016.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_017.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_017.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_018.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_018.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_019.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_019.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_amide_020.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_amide_020.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_000.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_000.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_001.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_001.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_002.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_002.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_003.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_003.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_004.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_004.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_005.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_005.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_006.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_006.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_007.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_007.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_008.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_008.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_009.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_009.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_010.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_010.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_011.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_011.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_012.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_012.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_013.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_013.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_014.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_014.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_015.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_015.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_016.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_016.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_017.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_017.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_018.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_018.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_019.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_019.inp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/output/la_water_020.inp" beforeDir="false" afterPath="$PROJECT_DIR$/lib/output/la_water_020.inp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/outputWriter.go" beforeDir="false" afterPath="$PROJECT_DIR$/outputWriter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/txyzPostProcessor.go" beforeDir="false" afterPath="$PROJECT_DIR$/txyzPostProcessor.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +106,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Paradox Interactive/Crusader Kings III/mod/sinews_of_war/metamod_src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -157,7 +119,7 @@
       <module name="Lanthanide-CBS" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
-      <parameters value="lib\input\la_water.inp lib\output lib\key" />
+      <parameters value="lib\input\la_acetate_bidentate.inp lib\output lib\key" />
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$" />
       <directory value="$PROJECT_DIR$" />

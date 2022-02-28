@@ -1,0 +1,15 @@
+%Mem=16GB
+%NProc=8
+%Chk=la_water_000.chk
+
+#MP2/Def2SVP SCF(maxcycle=100) Polar Density=MP2 MaxDisk=100GB
+
+la_water_000
+
+	3,1
+	La -0.038392 -0.277582 0.000000
+	O 0.149323 1.084201 0.000000
+	H 0.240635 1.674103 0.761699
+	H 0.240635 1.674103 -0.761699
+
+

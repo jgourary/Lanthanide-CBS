@@ -1,0 +1,19 @@
+%Mem=16GB
+%NProc=8
+%Chk=la_acetate_bidentate_008_cp.chk
+
+#p MP2/Def2QZVP wB97XD nosymm MaxDisk=1000GB Counterpoise=2
+
+la_acetate_bidentate_008
+
+	2,1 3,1 -1,1
+	La(Fragment=1) 0.976930 -0.001413 -0.000054
+	H(Fragment=2) -4.093407 -0.391692 0.955030
+	H(Fragment=2) -4.114188 -0.685602 -0.768082
+	C(Fragment=2) -3.768005 0.001070 -0.004802
+	C(Fragment=2) -2.292489 0.012520 -0.004692
+	O(Fragment=2) -1.596901 1.077389 0.000161
+	O(Fragment=2) -1.597637 -1.057311 -0.000010
+	H(Fragment=2) -4.157960 0.994952 -0.154519
+
+

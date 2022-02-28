@@ -1,0 +1,21 @@
+%Mem=16GB
+%NProc=8
+%Chk=la_amide_012_cp.chk
+
+#p MP2/Def2QZVP wB97XD nosymm MaxDisk=1000GB Counterpoise=2
+
+la_amide_012
+
+	3,1 3,1 0,1
+	La(Fragment=1) -1.266293 -0.011397 -0.000010
+	O(Fragment=2) 2.845899 0.290941 0.000252
+	N(Fragment=2) 4.833055 1.306996 0.000086
+	H(Fragment=2) 5.476340 -1.189324 0.878786
+	H(Fragment=2) 5.477513 -1.188741 -0.877776
+	H(Fragment=2) 5.837644 1.284625 -0.000047
+	C(Fragment=2) 4.843735 -1.111110 0.000102
+	H(Fragment=2) 4.129225 -1.918668 -0.000636
+	H(Fragment=2) 4.412337 2.215094 0.000189
+	C(Fragment=2) 4.168731 0.221597 0.000145
+
+

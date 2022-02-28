@@ -8,10 +8,14 @@ import (
 
 const memory = "4 GB"
 const basis = "def2-TZVPD"
+const basisNoCBS = "def2-QZVPD"
 const energy = "MP2/def2-[TQ]ZVPD"
-const mode = "auto"
+const energyNoCBS = "MP2/def2-QZVPD"
+const mode = "manual"
+const ionElement = "La"
+const CBS = false
 func getShiftDistances(eqDistance float64) []float64 {
-	samplePts := []float64{-1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0}
+	samplePts := []float64{-1.0, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0}
 	/*for i, pt := range samplePts {
 		samplePts[i] = pt + eqDistance
 	}*/
@@ -62,8 +66,15 @@ func main() {
 		fmt.Println("Shift Dist: " + fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
 			fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], ion-ligand dist = " + fmt.Sprintf("%.6f", newEquilibDistance))
 	}
+
+	// Write XYZ, TXYZ, INP files + filelist
 	writeInputs(ion, ligands, outputDir, structName, keyDir)
 
+	// Assemble QM-Energy.dat from all .dat files in the directory
+	//QMEnergyAssembler(outputDir)
+
+	// Assemble an output CSV from QM-Energy.dat, result.p, filelist
+	//makeCSV(outputDir)
 }
 
 
