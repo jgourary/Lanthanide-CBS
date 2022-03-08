@@ -11,7 +11,7 @@ import (
 const gaussian = false
 const psi4 = true
 
-const memory = "50 GB"
+const memory = "200 GB"
 const basis = "def2-QZVPD"
 const energy = "cbs, corl_wfn='mp2',corl_basis='def2-[TQ]ZVPD', delta_wfn='ccsd(t)', delta_basis='def2-[DT]ZVPD'"
 const ionElement = "La"

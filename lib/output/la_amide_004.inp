@@ -1,4 +1,4 @@
-memory 50 GB
+memory 200 GB
 set basis def2-QZVPD
 set soscf true
 set fail_on_maxiter false
