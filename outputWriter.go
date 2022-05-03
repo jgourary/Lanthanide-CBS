@@ -151,13 +151,13 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + "\n")
 		}
 		_, _ = thisFile.WriteString("\n\n")
-		file, _ := os.Open(filepath.Join("lib", "basis_sets", "gaussian"))
+		file, _ := os.Open(filepath.Join("lib", "basis_sets", "gaussian.txt"))
 		// fmt.Println("Reading file at " + filePath)
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
 			// get next line
 			line := scanner.Text()
-			_, _ = thisFile.WriteString(line)
+			_, _ = thisFile.WriteString(line + "\n")
 		}
 	}
 
