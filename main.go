@@ -8,7 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 )
-const gaussian = false
+
+const gaussian = true
 const psi4 = true
 
 const memory = "200 GB"
@@ -31,7 +32,6 @@ func getShiftDistances(eqDistance float64) []float64 {
 /*func getCostScaling() {
 	costScaling := []float64{-1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0}
 }*/
-
 
 func main() {
 	fileInfo, err := ioutil.ReadDir(inputDIr)
@@ -62,7 +62,7 @@ func main() {
 			var unitAxis []float64
 			var equilibDistance float64
 			if strings.Contains(name, "bidentate") {
-				unitAxis = []float64{-0.99998991,0.004261549,-0.001418643}
+				unitAxis = []float64{-0.99998991, 0.004261549, -0.001418643}
 				equilibDistance = 2.669451926
 
 			} else {
@@ -70,15 +70,14 @@ func main() {
 			}
 
 			fmt.Println("\nUnit axis = [" + fmt.Sprintf("%.6f", unitAxis[0]) + " " +
-				fmt.Sprintf("%.6f", unitAxis[1])  + " " + fmt.Sprintf("%.6f", unitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", equilibDistance))
-
+				fmt.Sprintf("%.6f", unitAxis[1]) + " " + fmt.Sprintf("%.6f", unitAxis[2]) + "], len = " + fmt.Sprintf("%.6f", equilibDistance))
 
 			ligands := generateModifiedStructures(ligand, unitAxis, equilibDistance)
 			fmt.Println("New Ligands: ")
 			for i, _ := range ligands {
 				newUnitAxis, newEquilibDistance := getUnitAxis(ion, ligands[i], -1)
 				fmt.Println("Shift Dist: " + fmt.Sprintf("%.3f", ligands[i].shift) + ": Unit axis = [" + fmt.Sprintf("%.6f", newUnitAxis[0]) + " " +
-					fmt.Sprintf("%.6f", newUnitAxis[1])  + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], ion-ligand dist = " + fmt.Sprintf("%.6f", newEquilibDistance))
+					fmt.Sprintf("%.6f", newUnitAxis[1]) + " " + fmt.Sprintf("%.6f", newUnitAxis[2]) + "], ion-ligand dist = " + fmt.Sprintf("%.6f", newEquilibDistance))
 			}
 
 			// Write XYZ, TXYZ, INP files + filelist
@@ -86,16 +85,12 @@ func main() {
 		}
 	}
 
-
-
 	// Assemble QM-Energy.dat from all .dat files in the directory
-	//QMEnergyAssembler(outputDir)
+	// QMEnergyAssembler(outputDir)
 
 	// Assemble an output CSV from QM-Energy.dat, result.p, filelist
-	//makeCSV(outputDir)
+	// makeCSV(outputDir)
 }
-
-
 
 func generateModifiedStructures(ligand molecule, unitAxis []float64, equilibDistance float64) []molecule {
 
@@ -106,7 +101,7 @@ func generateModifiedStructures(ligand molecule, unitAxis []float64, equilibDist
 	}
 	// for every positioning of the ligand...
 	for i, _ := range shiftDistances {
-		for j := 0; j < len(ligands[i].atoms); j++  {
+		for j := 0; j < len(ligands[i].atoms); j++ {
 			ligands[i].atoms[j].pos[0] += unitAxis[0] * shiftDistances[i]
 			ligands[i].atoms[j].pos[1] += unitAxis[1] * shiftDistances[i]
 			ligands[i].atoms[j].pos[2] += unitAxis[2] * shiftDistances[i]
@@ -128,7 +123,7 @@ func getUnitAxis(ionMol molecule, ligandMol molecule, ligandIndex int) ([]float6
 
 		for _, atom := range ligandMol.atoms {
 			dist := getDistance(startPos, atom.pos)
-			if  dist < closestDist {
+			if dist < closestDist {
 				endPos = atom.pos
 				closestDist = dist
 			}
@@ -138,14 +133,14 @@ func getUnitAxis(ionMol molecule, ligandMol molecule, ligandIndex int) ([]float6
 		endPos = ligandMol.atoms[ligandIndex].pos
 		closestDist = getDistance(startPos, endPos)
 	}
-	vector := []float64{(endPos[0]-startPos[0])/closestDist, (endPos[1]-startPos[1]) / closestDist, (endPos[2]-startPos[2])/closestDist}
+	vector := []float64{(endPos[0] - startPos[0]) / closestDist, (endPos[1] - startPos[1]) / closestDist, (endPos[2] - startPos[2]) / closestDist}
 	return vector, closestDist
 
 }
 
 func getDistance(pos1 []float64, pos2 []float64) float64 {
-	dx2 := math.Pow(pos1[0] - pos2[0],2)
-	dy2 := math.Pow(pos1[1] - pos2[1],2)
-	dz2 := math.Pow(pos1[2] - pos2[2],2)
-	return math.Sqrt(dx2+dy2+dz2)
+	dx2 := math.Pow(pos1[0]-pos2[0], 2)
+	dy2 := math.Pow(pos1[1]-pos2[1], 2)
+	dz2 := math.Pow(pos1[2]-pos2[2], 2)
+	return math.Sqrt(dx2 + dy2 + dz2)
 }

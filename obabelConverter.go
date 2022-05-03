@@ -11,7 +11,7 @@ import (
 	"sync"
 )
 
-const obabel string = "C:\\Program Files\\OpenBabel-3.1.1\\obabel.exe"
+const obabel string = "C:\\Program Files (x86)\\OpenBabel-3.0.0\\obabel.exe"
 const goRoutinesBatchSize int = 128
 
 // for file structure directory > file to be converted
@@ -23,10 +23,9 @@ func obabelConversion2(directory string, ext1 string, ext2 string, addHydrogens 
 		log.Fatal(err)
 	}
 
-
 	// Iterate through all items in directory
-	maxFrame := min(goRoutinesBatchSize,len(fileInfo)-1)
-	frame := []int{0,maxFrame}
+	maxFrame := min(goRoutinesBatchSize, len(fileInfo)-1)
+	frame := []int{0, maxFrame}
 
 	for frame[0] < len(fileInfo) {
 
@@ -64,10 +63,10 @@ func obabelWrapper(path1 string, path2 string, addHydrogens string, addCoords bo
 		cmdArgs = append(cmdArgs, "--gen3d")
 	}
 
-	//fmt.Println(path2)
-	//cmdstring := obabel + " -i " + path1 + " -o " + path2
+	// fmt.Println(path2)
+	// cmdstring := obabel + " -i " + path1 + " -o " + path2
 	out, err := exec.Command(obabel, cmdArgs...).CombinedOutput()
-	//fmt.Println(string(out))
+	// fmt.Println(string(out))
 	wg.Done()
 	if err != nil {
 		fmt.Println(string(out))
