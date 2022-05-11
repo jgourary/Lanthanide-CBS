@@ -2,7 +2,7 @@
 %NProc=8
 %Chk=la_amide_018.chk
 
-#MP2/Def2QZVP GUESS=READ SCF(maxcycle=100) Polar Density=MP2 MaxDisk=100GB
+#MP2/gen int=dkh MaxDisk=100GB
 
 la_amide_018
 
@@ -17,7 +17,6 @@ la_amide_018
 	H 2.932456 -2.006658 -0.000712
 	H 3.215568 2.127104 0.000113
 	C 2.971962 0.133607 0.000069
-
 
 H     0
 S    8   1.00

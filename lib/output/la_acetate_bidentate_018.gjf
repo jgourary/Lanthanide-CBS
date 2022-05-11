@@ -2,7 +2,7 @@
 %NProc=8
 %Chk=la_acetate_bidentate_018.chk
 
-#MP2/Def2QZVP GUESS=READ SCF(maxcycle=100) Polar Density=MP2 MaxDisk=100GB
+#MP2/gen int=dkh MaxDisk=100GB
 
 la_acetate_bidentate_018
 
@@ -15,7 +15,6 @@ la_acetate_bidentate_018
 	O -1.796899 1.078241 -0.000123
 	O -1.797635 -1.056459 -0.000294
 	H -4.357958 0.995804 -0.154803
-
 
 H     0
 S    8   1.00

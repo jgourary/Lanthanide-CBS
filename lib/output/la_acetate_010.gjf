@@ -2,7 +2,7 @@
 %NProc=8
 %Chk=la_acetate_010.chk
 
-#MP2/Def2QZVP GUESS=READ SCF(maxcycle=100) Polar Density=MP2 MaxDisk=100GB
+#MP2/gen int=dkh MaxDisk=100GB
 
 la_acetate_010
 
@@ -15,7 +15,6 @@ la_acetate_010
 	O -0.800646 0.274902 0.051546
 	O -2.281264 -1.366732 -0.007885
 	H -2.723326 1.833819 -0.218130
-
 
 H     0
 S    8   1.00

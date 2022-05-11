@@ -2,7 +2,7 @@
 %NProc=8
 %Chk=la_water_009.chk
 
-#MP2/Def2QZVP GUESS=READ SCF(maxcycle=100) Polar Density=MP2 MaxDisk=100GB
+#MP2/gen int=dkh MaxDisk=100GB
 
 la_water_009
 
@@ -11,7 +11,6 @@ la_water_009
 	O 0.272222 1.975770 0.000000
 	H 0.363533 2.565672 0.761699
 	H 0.363533 2.565672 -0.761699
-
 
 H     0
 S    8   1.00

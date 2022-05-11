@@ -136,7 +136,7 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 		_, _ = thisFile.WriteString("%Mem=16GB\n")
 		_, _ = thisFile.WriteString("%NProc=8\n")
 		_, _ = thisFile.WriteString("%Chk=" + structName + "_" + index2suffix(i) + ".chk\n\n")
-		_, _ = thisFile.WriteString("#MP2/Def2QZVP GUESS=READ SCF(maxcycle=100) Polar Density=MP2 MaxDisk=100GB\n\n")
+		_, _ = thisFile.WriteString("#MP2/gen int=dkh MaxDisk=100GB\n\n")
 		_, _ = thisFile.WriteString(structName + "_" + index2suffix(i) + "\n\n")
 
 		atomCharge, _ := strconv.Atoi(ion.charge)
@@ -150,7 +150,7 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
 				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + "\n")
 		}
-		_, _ = thisFile.WriteString("\n\n")
+		_, _ = thisFile.WriteString("\n")
 		file, _ := os.Open(filepath.Join("lib", "basis_sets", "gaussian.txt"))
 		// fmt.Println("Reading file at " + filePath)
 		scanner := bufio.NewScanner(file)
