@@ -89,7 +89,7 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 		_, _ = thisFile.WriteString("* xyz " + strconv.Itoa(ionCharge+ligandCharge) + " 1\n")
 		for _, atom := range ion.atoms {
 			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
-				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + "newgto\"" + orcaAuxiliaryBasis + "\"\n")
+				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + " newgto \"" + orcaAuxiliaryBasis + "\" end\n")
 		}
 		for _, atom := range ligandSlice {
 			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
