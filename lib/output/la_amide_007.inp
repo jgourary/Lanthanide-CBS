@@ -1,17 +1,6 @@
-memory 200 GB
-set {
-	basis def2-QZVPD
-	soscf true
-	fail_on_maxiter false
-	relativistic dkh
-	dkh_order 2
-}
-
-molecule{
-	3 1
-	La -1.266293 -0.011397 -0.000010
-	--
-	0 1
+!MP2 ZORA-DEF2-TZVP CCSD(T)
+* xyz 3 1
+	La -1.266293 -0.011397 -0.000010newgto"SARC-ZORA-TZVP"
 	O 0.552091 0.122295 0.000106
 	N 2.539247 1.138350 -0.000060
 	H 3.182532 -1.357970 0.878640
@@ -21,6 +10,4 @@ molecule{
 	H 1.835417 -2.087314 -0.000782
 	H 2.118529 2.046448 0.000043
 	C 1.874923 0.052951 -0.000001
-}
-
-energy(cbs, corl_wfn='mp2',corl_basis='def2-[TQ]ZVPD', delta_wfn='ccsd(t)', delta_basis='def2-[DT]ZVPD')
+*

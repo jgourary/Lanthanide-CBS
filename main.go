@@ -9,8 +9,12 @@ import (
 	"strings"
 )
 
-const gaussian = true
-const psi4 = true
+const gaussian = false
+const psi4 = false
+const orca = true
+const xyz = true
+const orcaCommandLine = "!MP2 ZORA-DEF2-TZVP CCSD(T)"
+const orcaAuxiliaryBasis = "SARC-ZORA-TZVP"
 
 const memory = "200 GB"
 const basis = "def2-QZVPD"
