@@ -80,15 +80,18 @@ func postProcessTXYZ(path string, keyChain map[string]map[string]string) {
 		}
 	}
 
+	//fmt.Println("file = " + path)
+
 	atoms := make(map[string]*atom)
 	// read as molecule and edit bonds
 	for _, nextLine := range outLines {
 		tokens := strings.Fields(nextLine)
-		if len(tokens) > 5 {
+		if len(tokens) > 4 {
 			// create new atom
 			var newAtom atom
 			newAtom.id = tokens[0]
 			newAtom.element = tokens[1]
+			//fmt.Println(newAtom.element)
 			pos := make([]float64,3)
 			for j := 2; j < 5; j++ {
 				pos[j-2], err = strconv.ParseFloat(tokens[j],64)
@@ -115,6 +118,12 @@ func postProcessTXYZ(path string, keyChain map[string]map[string]string) {
 			}
 		}
 	}
+
+
+	/*fmt.Println("slice length = " + strconv.Itoa(len(atoms)))
+	for id, atom := range atoms {
+		fmt.Println("id = " + id + " element = " + atom.element)
+	}*/
 
 	atomSlice := make([]atom, len(atoms))
 	for id, atom := range atoms {

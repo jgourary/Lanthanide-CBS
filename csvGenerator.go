@@ -46,7 +46,7 @@ func getIonLigandDist(structure map[int]*atom) float64 {
 
 	// identify ion
 	for i, atom := range structure {
-		if atom.element == ionElement {
+		if atom.element != "C" && atom.element != "O" && atom.element != "H" && atom.element != "N" && atom.element != "P" {
 			ionKey = i
 		}
 	}

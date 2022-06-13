@@ -86,7 +86,10 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 		_, _ = thisFile.WriteString(orcaCommandLine + "\n")
 		ionCharge, _ := strconv.Atoi(ion.charge)
 		ligandCharge, _ := strconv.Atoi(ligand.charge)
-		_, _ = thisFile.WriteString("* xyz " + strconv.Itoa(ionCharge+ligandCharge) + " 1\n")
+		ionMult, _ := strconv.Atoi(ion.multiplicity)
+		ligandMult, _ := strconv.Atoi(ligand.multiplicity)
+		trueMult := ionMult - 1 + ligandMult - 1 + 1
+		_, _ = thisFile.WriteString("* xyz " + strconv.Itoa(ionCharge+ligandCharge) + " " + strconv.Itoa(trueMult) + "\n")
 		for _, atom := range ion.atoms {
 			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
 				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + " newgto \"" + orcaAuxiliaryBasis + "\" end\n")
