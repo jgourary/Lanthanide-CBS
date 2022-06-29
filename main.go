@@ -24,7 +24,7 @@ const keyDir = "lib\\key"
 const outputDir = "lib\\output"
 const inputDIr = "lib\\input"
 
-func getShiftDistances(eqDistance float64) []float64 {
+func getShiftDistances() []float64 {
 	samplePts := []float64{-1.0, -0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0}
 	/*for i, pt := range samplePts {
 		samplePts[i] = pt + eqDistance
@@ -103,7 +103,7 @@ func main() {
 
 func generateModifiedStructures(ligand molecule, unitAxis []float64, equilibDistance float64) []molecule {
 
-	shiftDistances := getShiftDistances(equilibDistance)
+	shiftDistances := getShiftDistances()
 	ligands := make([]molecule, len(shiftDistances))
 	for i, _ := range shiftDistances {
 		ligands[i] = copyMolecule(ligand)

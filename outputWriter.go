@@ -77,6 +77,7 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 	}
 
 	if orca {
+		// Write base file
 		outPath := filepath.Join(outDir, structName+"_"+index2suffix(i)+".inp")
 		thisFile, err := os.Create(outPath)
 		if err != nil {
@@ -92,6 +93,44 @@ func writeInput(ion molecule, ligand molecule, outDir string, structName string,
 		_, _ = thisFile.WriteString("* xyz " + strconv.Itoa(ionCharge+ligandCharge) + " " + strconv.Itoa(trueMult) + "\n")
 		for _, atom := range ion.atoms {
 			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
+				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + " newgto \"" + orcaAuxiliaryBasis + "\" end\n")
+		}
+		for _, atom := range ligandSlice {
+			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
+				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + "\n")
+		}
+		_, _ = thisFile.WriteString("*")
+
+		// Write ion BSSE files
+		outPath = filepath.Join(outDir, structName+"_"+index2suffix(i)+"_ion_AB.inp")
+		thisFile, err = os.Create(outPath)
+		if err != nil {
+			fmt.Println("Failed to create new fragment file: " + outPath)
+			log.Fatal(err)
+		}
+		_, _ = thisFile.WriteString(orcaCommandLine + "\n")
+		_, _ = thisFile.WriteString("* xyz " + strconv.Itoa(ionCharge) + " " + strconv.Itoa(ionMult) + "\n")
+		for _, atom := range ion.atoms {
+			_, _ = thisFile.WriteString("\t" + atom.element + " " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
+				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + " newgto \"" + orcaAuxiliaryBasis + "\" end\n")
+		}
+		for _, atom := range ligandSlice {
+			_, _ = thisFile.WriteString("\t" + atom.element + " : " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
+				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + "\n")
+		}
+		_, _ = thisFile.WriteString("*")
+
+		// Write ligand BSSE files
+		outPath = filepath.Join(outDir, structName+"_"+index2suffix(i)+"_ligand_AB.inp")
+		thisFile, err = os.Create(outPath)
+		if err != nil {
+			fmt.Println("Failed to create new fragment file: " + outPath)
+			log.Fatal(err)
+		}
+		_, _ = thisFile.WriteString(orcaCommandLine + "\n")
+		_, _ = thisFile.WriteString("* xyz " + strconv.Itoa(ligandCharge) + " " + strconv.Itoa(ligandMult) + "\n")
+		for _, atom := range ion.atoms {
+			_, _ = thisFile.WriteString("\t" + atom.element + " : " + fmt.Sprintf("%.6f", atom.pos[0]) + " " +
 				fmt.Sprintf("%.6f", atom.pos[1]) + " " + fmt.Sprintf("%.6f", atom.pos[2]) + " newgto \"" + orcaAuxiliaryBasis + "\" end\n")
 		}
 		for _, atom := range ligandSlice {
