@@ -13,7 +13,7 @@ const gaussian = false
 const psi4 = false
 const orca = true
 const xyz = true
-const orcaCommandLine = "!MP2 ZORA-DEF2-TZVP DLPNO-CCSD(T)"
+const orcaCommandLine = "!MP2 ZORA-DEF2-TZVP def2-TZVP/C DLPNO-CCSD(T)"
 const orcaAuxiliaryBasis = "SARC-ZORA-TZVP"
 
 const memory = "200 GB"
